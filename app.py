@@ -17,50 +17,102 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+        /* จัดกลางในพื้นที่เนื้อหาจริง (หลังหัก sidebar) แทนการล็อกความกว้างแบบตายตัว
+           ป้องกัน hero โดน sidebar ทับ และรองรับทุกขนาดจอ */
         .block-container {
-            max-width: 1120px;
+            max-width: 1180px;
+            margin-left: auto;
+            margin-right: auto;
             padding-top: 2rem;
             padding-bottom: 3rem;
+            padding-left: clamp(1rem, 3vw, 3rem);
+            padding-right: clamp(1rem, 3vw, 3rem);
         }
 
         .hero {
-            padding: 1.6rem 1.7rem;
-            border-radius: 20px;
-            border: 1px solid rgba(128, 128, 128, 0.22);
-            background: linear-gradient(
-                135deg,
-                rgba(56, 142, 60, 0.09),
-                rgba(255, 255, 255, 0.02)
-            );
-            margin-bottom: 1.2rem;
+            padding: 2rem 2.2rem;
+            border-radius: 22px;
+            border: 1px solid rgba(99, 175, 96, 0.28);
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(76, 175, 80, 0.22),
+                    transparent 55%
+                ),
+                linear-gradient(
+                    135deg,
+                    rgba(46, 125, 50, 0.16),
+                    rgba(30, 136, 229, 0.10)
+                );
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.12);
+            margin-bottom: 1.4rem;
+            overflow-wrap: anywhere;
         }
 
         .hero h1 {
-            font-size: 2rem;
-            margin: 0 0 0.35rem 0;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            margin: 0 0 0.4rem 0;
+            background: linear-gradient(90deg, #43a047, #1e88e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             margin: 0;
-            opacity: 0.78;
+            font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+            opacity: 0.82;
         }
 
         .soft-card {
-            padding: 1.2rem 1.3rem;
-            border: 1px solid rgba(128, 128, 128, 0.22);
-            border-radius: 17px;
+            padding: 1.4rem 1.5rem;
+            border: 1px solid rgba(99, 175, 96, 0.25);
+            border-radius: 18px;
             margin-top: 1rem;
+            background: rgba(76, 175, 80, 0.04);
         }
 
         div[data-testid="stMetric"] {
-            border: 1px solid rgba(128, 128, 128, 0.18);
+            border: 1px solid rgba(99, 175, 96, 0.22);
             border-radius: 14px;
-            padding: 0.8rem;
+            padding: 0.9rem 1rem;
+            background: rgba(76, 175, 80, 0.05);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        div[data-testid="stMetric"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(46, 125, 50, 0.15);
+        }
+
+        /* ปุ่มหลักให้เด่นขึ้นด้วยไล่เฉดเขียว-ฟ้า */
+        .stButton > button[kind="primary"],
+        .stFormSubmitButton > button[kind="primary"],
+        div[data-testid="stDownloadButton"] > button[kind="primary"] {
+            background: linear-gradient(90deg, #43a047, #2e7d32);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 0.4rem;
         }
 
         .small-note {
             font-size: 0.9rem;
             opacity: 0.70;
+        }
+
+        /* จอแคบ/มือถือ: ลดขอบ ป้องกันเนื้อหาล้น */
+        @media (max-width: 640px) {
+            .block-container {
+                padding-left: 0.8rem;
+                padding-right: 0.8rem;
+            }
+            .hero {
+                padding: 1.4rem 1.3rem;
+            }
         }
     </style>
     """,
