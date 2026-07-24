@@ -417,3 +417,7 @@ with process_tab:
         width="stretch",
         hide_index=True,
     )
+
+st.markdown("---")
+st.markdown("<p style='text-align:center;color:#5a6b8c;margin-top:30px;'>Made with Streamlit · Machine Learning Projects</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center;color:#5a6b8c;margin-top:4px;'>Develop By tpp72</p>", unsafe_allow_html=True)
