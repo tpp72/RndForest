@@ -23,7 +23,7 @@ st.markdown(
             max-width: 1180px;
             margin-left: auto;
             margin-right: auto;
-            padding-top: 2rem;
+            padding-top: 4rem;
             padding-bottom: 3rem;
             padding-left: clamp(1rem, 3vw, 3rem);
             padding-right: clamp(1rem, 3vw, 3rem);
